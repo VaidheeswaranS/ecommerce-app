@@ -10,23 +10,27 @@ import Orders from "./pages/Orders.jsx";
 import PlaceOrder from "./pages/PlaceOrder.jsx";
 import Product from "./pages/Product.jsx";
 import NavBar from "./components/NavBar.jsx";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
 
 const App = () => {
   return (
-    <div className="px-6 font-[outfit]">
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/collection" element={<Collection />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/place-order" element={<PlaceOrder />} />
-        <Route path="/product/:productId" element={<Product />} />
-      </Routes>
-    </div>
+    <Provider store={appStore}>
+      <div className="px-6 font-[outfit]">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/collection" element={<Collection />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/place-order" element={<PlaceOrder />} />
+          <Route path="/product/:productId" element={<Product />} />
+        </Routes>
+      </div>
+    </Provider>
   );
 };
 
