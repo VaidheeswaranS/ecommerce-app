@@ -6,11 +6,11 @@ const ProductItem = ({ product }) => {
   const imageId = image[0];
   return (
     <Link to={`/product/${_id}`} className="flex flex-col gap-2 cursor-pointer">
-      <div>
+      <div className="overflow-hidden">
         <img
           src={imageId}
           alt={name}
-          className="w-full h-64 object-cover mb-4"
+          className="w-full h-64 object-cover mb-4 hover:scale-110 transition-ease-in-out duration-200"
         />
       </div>
       <p className="text-sm">{name}</p>

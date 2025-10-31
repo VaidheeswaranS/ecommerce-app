@@ -7,7 +7,9 @@ const NavBar = () => {
     <div className="py-5 flex flex-row items-center justify-between font-medium">
       {/* Left Section */}
       <div>
-        <img src={assets.logo} alt="Logo" className="w-36" />
+        <Link to="/">
+          <img src={assets.logo} alt="Logo" className="w-36" />
+        </Link>
       </div>
 
       {/* Center Section */}
