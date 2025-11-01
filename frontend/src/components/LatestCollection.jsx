@@ -4,7 +4,6 @@ import Title from "./Title";
 import ProductItem from "./ProductItem";
 
 const LatestCollection = () => {
-  console.log(products);
   const [latestProducts, setLatestProducts] = useState([]);
 
   useEffect(() => {
@@ -18,12 +17,11 @@ const LatestCollection = () => {
       <div className="my-10">
         {/* Title Section */}
         <div className="text-center text-3xl py-5">
-          <Title
-            heading1="LATEST"
-            heading2="COLLECTIONS"
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the"
-          />
+          <Title heading1="LATEST" heading2="COLLECTIONS" />
+          <p className="text-lg text-gray-500">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the
+          </p>
         </div>
 
         {/* Products Grid */}

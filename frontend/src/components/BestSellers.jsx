@@ -20,12 +20,11 @@ const BestSellers = () => {
       <div className="my-10">
         {/* Title Section */}
         <div className="text-center text-3xl py-5">
-          <Title
-            heading1="BEST"
-            heading2="SELLERS"
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the"
-          />
+          <Title heading1="BEST" heading2="SELLERS" />
+          <p className="text-lg text-gray-500">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the
+          </p>
         </div>
 
         {/* Products Grid */}
