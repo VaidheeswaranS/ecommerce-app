@@ -129,14 +129,6 @@ const Collection = () => {
             <div className="text-2xl">
               <Title heading1="ALL" heading2="COLLECTIONS" />
             </div>
-            {/* Products Sort */}
-            {/* <div>
-              <select className="border-2 border-gray-300 px-2 py-2 text-sm">
-                <option value="relevant">Sort by: Relevant</option>
-                <option value="low-high">Sort by: Low to High</option>
-                <option value="high-low">Sort by: High to Low</option>
-              </select>
-            </div> */}
           </div>
 
           {/* Products Grid */}

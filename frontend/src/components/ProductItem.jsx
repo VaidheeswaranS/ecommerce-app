@@ -10,7 +10,7 @@ const ProductItem = ({ product }) => {
         <img
           src={imageId}
           alt={name}
-          className="w-full h-64 object-cover mb-4 hover:scale-110 transition-ease-in-out duration-200"
+          className="w-[300px] h-[380px] object-cover mb-4 hover:scale-110 transition-ease-in-out duration-200"
         />
       </div>
       <p className="text-sm">{name}</p>
