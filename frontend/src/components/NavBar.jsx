@@ -1,8 +1,13 @@
 ﻿import React from "react";
 import { assets } from "../assets/frontend_assets/assets";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const cartItems = useSelector((store) => store.cart.items);
+
+  console.log(cartItems.length);
+
   return (
     <div className="py-5 flex flex-row items-center justify-between font-medium">
       {/* Left Section */}
@@ -63,6 +68,9 @@ const NavBar = () => {
             alt="Cart"
             className="w-5 cursor-pointer"
           />
+          <p className="absolute -top-2 -right-2 text-sm bg-red-500 text-white rounded-full px-1.5">
+            {cartItems.length}
+          </p>
         </Link>
       </div>
     </div>
