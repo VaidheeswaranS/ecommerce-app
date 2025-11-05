@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 const Contact = () => {
   return (
     <>
+      <div className="border border-t border-gray-200"></div>
       {/* Title Section */}
       <div className="text-2xl text-center my-10">
         <Title heading1="CONTACT" heading2="US" />

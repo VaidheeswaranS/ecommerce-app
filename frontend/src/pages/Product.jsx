@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import RelatedProducts from "../components/RelatedProducts";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../utils/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const Product = () => {
   const [selectedSize, setSelectedSize] = useState("");
@@ -27,7 +28,7 @@ const Product = () => {
 
   const handleAddToCart = () => {
     if (!selectedSize) {
-      alert("Please select a size before adding to cart.");
+      toast.error("Please select a size before adding to cart.");
       return;
     }
 

@@ -12,11 +12,13 @@ import Product from "./pages/Product.jsx";
 import NavBar from "./components/NavBar.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
+import { ToastContainer, toast } from "react-toastify";
 
 const App = () => {
   return (
     <Provider store={appStore}>
       <div className="px-6 font-[outfit]">
+        <ToastContainer />
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
