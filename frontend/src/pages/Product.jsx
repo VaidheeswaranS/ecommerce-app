@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import RelatedProducts from "../components/RelatedProducts";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../utils/cartSlice";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Product = () => {
   const [selectedSize, setSelectedSize] = useState("");

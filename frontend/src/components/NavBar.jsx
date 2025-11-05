@@ -68,7 +68,7 @@ const NavBar = () => {
             alt="Cart"
             className="w-5 cursor-pointer"
           />
-          <p className="absolute -top-2 -right-2 text-sm bg-red-500 text-white rounded-full px-1.5">
+          <p className="absolute -top-2 -right-2 text-sm bg-red-500 text-white rounded-full px-1.5 cursor-pointer">
             {cartItems.length}
           </p>
         </Link>

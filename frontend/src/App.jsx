@@ -12,7 +12,7 @@ import Product from "./pages/Product.jsx";
 import NavBar from "./components/NavBar.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
