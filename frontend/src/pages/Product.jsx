@@ -4,10 +4,15 @@ import { products } from "../assets/frontend_assets/assets";
 import { assets } from "../assets/frontend_assets/assets";
 import Footer from "../components/Footer";
 import RelatedProducts from "../components/RelatedProducts";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../utils/cartSlice";
 
 const Product = () => {
   const [selectedSize, setSelectedSize] = useState("");
+  const [quantity, setQuantity] = useState(1);
   const [mainImage, setMainImage] = useState("");
+
+  const dispatcher = useDispatch();
 
   const handleImageClick = (image) => {
     setMainImage(image);
@@ -18,6 +23,22 @@ const Product = () => {
 
   const handleSizeClick = (size) => {
     setSelectedSize(size);
+  };
+
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert("Please select a size before adding to cart.");
+      return;
+    }
+
+    const cartItem = {
+      productId: productId,
+      size: selectedSize,
+      quantity: quantity,
+    };
+
+    console.log("Cart Item:", cartItem);
+    dispatcher(addToCart(cartItem));
   };
 
   return (
@@ -101,7 +122,29 @@ const Product = () => {
                 </button>
               ))}
             </div>
-            <button className="bg-black text-white px-6 py-3 mt-6 hover:bg-gray-800 active:bg-gray-500 w-[200px] cursor-pointer mb-10">
+
+            {/* Quantity Dropdown */}
+            <div className="mt-6">
+              <p className="mb-4">Select Quantity</p>
+              <select
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className="border border-gray-400 px-4 py-2 cursor-pointer hover:border-black"
+              >
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                  <option key={num} value={num}>
+                    {num}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button
+              className="bg-black text-white px-6 py-3 mt-6 hover:bg-gray-800 active:bg-gray-500 w-[200px] cursor-pointer mb-10"
+              onClick={() => {
+                handleAddToCart();
+              }}
+            >
               Add to Cart
             </button>
             <div className="border border-t border-gray-200"></div>
