@@ -3,13 +3,14 @@ import { assets, products } from "../assets/frontend_assets/assets";
 import Title from "../components/Title";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { removeFromCart } from "../utils/cartSlice";
 import { toast } from "react-toastify";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const dispatcher = useDispatch();
+  const navigate = useNavigate();
 
   const handleDeleteItems = (index) => {
     // Updating the redux store by removing the item
@@ -98,7 +99,10 @@ const Cart = () => {
               </p>
             </div>
           </div>
-          <button className="bg-black text-white px-6 py-3 ml-auto mt-1 hover:bg-gray-800 duration-300">
+          <button
+            className="bg-black text-white px-6 py-3 ml-auto mt-1 hover:bg-gray-800 duration-300 cursor-pointer"
+            onClick={() => navigate("/place-order")}
+          >
             Proceed to Checkout
           </button>
         </div>
