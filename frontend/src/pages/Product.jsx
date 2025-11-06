@@ -40,6 +40,7 @@ const Product = () => {
 
     console.log("Cart Item:", cartItem);
     dispatcher(addToCart(cartItem));
+    toast.success("Product added to cart!");
   };
 
   return (

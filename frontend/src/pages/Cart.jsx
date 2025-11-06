@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { removeFromCart } from "../utils/cartSlice";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -13,6 +14,7 @@ const Cart = () => {
   const handleDeleteItems = (index) => {
     // Updating the redux store by removing the item
     dispatcher(removeFromCart(cartItems[index]));
+    toast.success("Product removed from cart");
   };
 
   if (cartItems.length === 0) {
