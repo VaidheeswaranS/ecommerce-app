@@ -4,7 +4,7 @@ import { assets } from "../assets/frontend_assets/assets";
 const Footer = () => {
   return (
     <div>
-      <div className="flex flex-row mt-20 w-3/4 items-center justify-between mx-auto pb-10">
+      <div className="flex flex-row mt-50 w-3/4 items-center justify-between mx-auto pb-10">
         {/* Footer Left Section */}
         <div className="flex flex-col items-start">
           <img src={assets.logo} alt="Footer Logo" className="w-32 mb-4" />

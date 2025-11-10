@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { assets, products } from "../assets/frontend_assets/assets";
 import { toast } from "react-toastify";
+import Footer from "../components/Footer";
 
 const PlaceOrder = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -44,7 +45,7 @@ const PlaceOrder = () => {
         <div className="border border-t border-gray-200"></div>
         <div className="flex flex-row gap-10 justify-between mx-auto w-[1200px]">
           {/* Left Section */}
-          <div className="w-[600px] h-[400px] flex flex-col my-20 px-7">
+          <form className="w-[600px] h-[400px] flex flex-col my-20 px-7">
             {/* Title Section */}
             <div className="text-2xl mb-7">
               <Title heading1="DELIVERY" heading2="INFORMATION" />
@@ -55,11 +56,13 @@ const PlaceOrder = () => {
                 type="text"
                 placeholder="First Name"
                 className="border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none w-1/2 rounded-md"
+                required
               />
               <input
                 type="text"
                 placeholder="Last Name"
                 className="border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none w-1/2 rounded-md"
+                required
               />
             </div>
             <div>
@@ -67,6 +70,7 @@ const PlaceOrder = () => {
                 type="email"
                 placeholder="Email Address"
                 className="border border-gray-300 px-4 py-2 focus:outline-none w-full rounded-md my-2"
+                required
               />
             </div>
             <div>
@@ -74,6 +78,7 @@ const PlaceOrder = () => {
                 type="text"
                 placeholder="Street"
                 className="border border-gray-300 px-4 py-2 focus:outline-none w-full rounded-md my-2"
+                required
               />
             </div>
             <div className="flex flex-row gap-3 my-2">
@@ -81,11 +86,13 @@ const PlaceOrder = () => {
                 type="text"
                 placeholder="City"
                 className="border border-gray-300 px-4 py-2 focus:outline-none w-1/2 rounded-md"
+                required
               />
               <input
                 type="text"
                 placeholder="State"
                 className="border border-gray-300 px-4 py-2 focus:outline-none w-1/2 rounded-md"
+                required
               />
             </div>
             <div className="flex flex-row gap-3 my-2">
@@ -93,11 +100,13 @@ const PlaceOrder = () => {
                 type="text"
                 placeholder="Zipcode"
                 className="border border-gray-300 px-4 py-2 focus:outline-none w-1/2 rounded-md"
+                required
               />
               <input
                 type="text"
                 placeholder="Country"
                 className="border border-gray-300 px-4 py-2 focus:outline-none w-1/2 rounded-md"
+                required
               />
             </div>
             <div>
@@ -105,9 +114,10 @@ const PlaceOrder = () => {
                 type="number"
                 placeholder="Phone"
                 className="border border-gray-300 px-4 py-2 focus:outline-none w-full rounded-md my-2"
+                required
               />
             </div>
-          </div>
+          </form>
 
           {/* Right Section */}
           <div className="w-[800px] h-[400px] flex flex-col my-20 px-7 justify-center">
@@ -190,6 +200,8 @@ const PlaceOrder = () => {
             </button>
           </div>
         </div>
+        {/* Footer Section */}
+        <Footer />
       </>
     );
   }

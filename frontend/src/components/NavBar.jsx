@@ -47,11 +47,13 @@ const NavBar = () => {
           className="w-5 cursor-pointer"
         />
         <div className="relative group">
-          <img
-            src={assets.profile_icon}
-            alt="User"
-            className="w-5 cursor-pointer"
-          />
+          <Link to="/login">
+            <img
+              src={assets.profile_icon}
+              alt="User"
+              className="w-5 cursor-pointer"
+            />{" "}
+          </Link>
           <div className="absolute group-hover:block hidden dropdown-menu right-0 pt-4">
             <div className="flex flex-col gap-2 w-36 py-3 px-4 bg-slate-100 text-gray-500">
               <p className="hover:text-black cursor-pointer">My Profile</p>

@@ -2,6 +2,8 @@
 import { useSelector } from "react-redux";
 import { products } from "../assets/frontend_assets/assets";
 import { Link } from "react-router-dom";
+import Title from "../components/Title";
+import Footer from "../components/Footer";
 
 const Orders = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -14,7 +16,7 @@ const Orders = () => {
         <div className="border border-t border-gray-200"></div>
         {/* Title Section */}
         <div className="text-2xl text-center my-10">
-          <h1 className="font-bold">YOUR ORDERS</h1>
+          <Title heading1="YOUR" heading2="ORDERS" />
         </div>
         {/* Orders Items Section */}
         <div className="text-center text-lg text-gray-500 my-10">
@@ -90,6 +92,8 @@ const Orders = () => {
             );
           })}
         </div>
+        {/* Footer Section */}
+        <Footer />
       </>
     );
   }
