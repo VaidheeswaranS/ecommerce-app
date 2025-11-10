@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 const NavBar = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
-  console.log(cartItems.length);
-
   return (
     <div className="py-5 flex flex-row items-center justify-between font-medium">
       {/* Left Section */}
