@@ -7,20 +7,24 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      minLenghth: 3,
+      minLength: 3,
       maxLength: 100,
     },
     description: {
       type: String,
       required: true,
       trim: true,
-      minLength: 500,
-      maxLength: 1000,
+      minLength: 10,
+      maxLength: 500,
     },
     price: {
       type: Number,
       required: true,
       min: 1,
+    },
+    image: {
+      type: Array,
+      required: true,
     },
     category: {
       type: String,
@@ -35,7 +39,7 @@ const productSchema = new mongoose.Schema(
       maxLength: 50,
     },
     sizes: {
-      type: [String],
+      type: [],
       required: true,
       validate: {
         validator: function (v) {
@@ -46,7 +50,7 @@ const productSchema = new mongoose.Schema(
     },
     date: {
       type: Number,
-      requyired: true,
+      required: true,
     },
     bestSeller: {
       type: Boolean,

@@ -6,7 +6,7 @@ import validator from "validator";
 
 // generating the JWT token for the user
 const generateToken = (userId) => {
-  return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
+  return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "1d" });
 };
 
 // Normal user login request
@@ -46,6 +46,11 @@ const loginUser = async (req, res) => {
 
     // generate JWT token for the user
     const token = generateToken(user._id);
+
+    // add token to the cookie and send it back to the user in response
+    res.cookie("token", token, {
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day = 24 hours
+    });
 
     // send success response
     res.status(200).json({
@@ -96,6 +101,11 @@ const registerUser = async (req, res) => {
 
     // generate JWT token for the user
     const token = generateToken(user._id);
+
+    // add token to the cookie and send it back to the user in response
+    res.cookie("token", token, {
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day = 24 hours
+    });
 
     // send success response
     res.status(200).json({

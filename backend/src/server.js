@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import connectToDatabase from "./config/database.js";
 import connectToCloudinary from "./config/cloudinary.js";
 import userRouter from "./routes/userRoute.js";
+import productRouter from "./routes/productRoute.js";
 
 // app configuration
 const app = express();
@@ -22,6 +23,7 @@ app.use(cookieParser());
 
 // API endpoints
 app.use("/api/user", userRouter);
+app.use("/api/product", productRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");
