@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectToDatabase from "./config/database.js";
 import connectToCloudinary from "./config/cloudinary.js";
+import userRouter from "./routes/userRoute.js";
 
 // app configuration
 const app = express();
@@ -20,6 +21,8 @@ app.use(cors());
 app.use(cookieParser());
 
 // API endpoints
+app.use("/api/user", userRouter);
+
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
