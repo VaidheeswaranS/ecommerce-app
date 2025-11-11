@@ -126,6 +126,55 @@ const registerUser = async (req, res) => {
 };
 
 // Admin user login request
-const adminLogin = async (req, res) => {};
+const adminLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // check 1: validate if email and password are provided
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Email and password are required." });
+    }
+
+    // check 2: verify if the admin credentials are correct
+    if (
+      email !== process.env.ADMIN_EMAIL ||
+      password !== process.env.ADMIN_PASSWORD
+    ) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid admin credentials." });
+    }
+
+    // generate JWT token for the admin
+    const token = jwt.sign(
+      { email: email, role: "admin" },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1d",
+      }
+    );
+
+    // add token to the cookie and send it back to the admin in response
+    res.cookie("token", token, {
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day = 24 hours
+    });
+
+    // send success response
+    res.status(200).json({
+      success: true,
+      message: "Admin logged in successfully.",
+      data: {
+        admin: {
+          email: email,
+        },
+        token: token,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 export { loginUser, registerUser, adminLogin };

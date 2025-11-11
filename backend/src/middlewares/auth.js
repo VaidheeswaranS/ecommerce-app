@@ -30,4 +30,31 @@ const userAuth = async (req, res, next) => {
   }
 };
 
-export default userAuth;
+const adminAuth = async (req, res, next) => {
+  try {
+    const { token } = req.cookies;
+
+    // check 1: verify if the token is present in the cookies
+    if (!token) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Please Login as Admin!" });
+    }
+
+    // check 2: verify the token is valid or not
+    const decodedObj = jwt.verify(token, process.env.JWT_SECRET);
+    
+    // check 3: verify if the user has admin role
+    if (decodedObj.email !== process.env.ADMIN_EMAIL || decodedObj.role !== "admin") {
+      return res
+        .status(401)
+        .json({ success: false, message: "Unauthorized access!" });
+    }
+
+    next();
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+export { userAuth, adminAuth };

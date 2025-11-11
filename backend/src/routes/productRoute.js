@@ -5,7 +5,7 @@ import {
   listProducts,
   singleProduct,
 } from "../controllers/productController.js";
-import userAuth from "../middlewares/auth.js";
+import { adminAuth, userAuth } from "../middlewares/auth.js";
 import upload from "../middlewares/multer.js";
 
 const productRouter = express.Router();
@@ -13,7 +13,7 @@ const productRouter = express.Router();
 // Route to add a new product
 productRouter.post(
   "/add",
-  userAuth,
+  adminAuth,
   upload.fields([
     { name: "image1", maxCount: 1 },
     { name: "image2", maxCount: 1 },
@@ -24,12 +24,12 @@ productRouter.post(
 );
 
 // Route to remove a product
-productRouter.post("/remove", userAuth, removeProduct);
+productRouter.post("/remove", adminAuth, removeProduct);
 
 // Get all the product details
-productRouter.get("/list", userAuth, listProducts);
+productRouter.get("/list", listProducts);
 
 // Get the details for a single Product
-productRouter.post("/single", userAuth, singleProduct);
+productRouter.post("/single", singleProduct);
 
 export default productRouter;
