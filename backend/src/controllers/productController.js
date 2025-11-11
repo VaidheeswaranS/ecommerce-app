@@ -78,12 +78,85 @@ const addProduct = async (req, res) => {
 };
 
 // Removing the products
-const removeProduct = async (req, res) => {};
+const removeProduct = async (req, res) => {
+  try {
+    const { productId } = req.body;
+
+    // check if productId is provided
+    if (!productId) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Product ID is required." });
+    }
+
+    // find and delete the product
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+
+    if (!deletedProduct) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found." });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Product removed successfully.",
+      data: {
+        product: deletedProduct,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 // Getting the total products list
-const listProducts = async (req, res) => {};
+const listProducts = async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.status(200).json({
+      success: true,
+      message: "Products fetched successfully",
+      data: {
+        products,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 // Getting a single product details
-const singleProduct = async (req, res) => {};
+const singleProduct = async (req, res) => {
+  try {
+    const { productId } = req.body;
+
+    // check if productId is provided
+    if (!productId) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Product ID is required." });
+    }
+
+    // find the product by ID
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found." });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Product fetched successfully.",
+      data: {
+        product,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 export { addProduct, removeProduct, listProducts, singleProduct };
