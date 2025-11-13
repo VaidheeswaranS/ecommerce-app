@@ -11,10 +11,16 @@ const Login = ({ setIsAdmin }) => {
     try {
       event.preventDefault();
       // hitting the backend for admin login
-      const response = await axios.post(backendUrl + "/api/user/admin/login", {
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        backendUrl + "/api/user/admin/login",
+        {
+          email: email,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
       if (response.data.success === "Invalid admin credentials.") {
         toast.error(response.data.message);
@@ -24,6 +30,7 @@ const Login = ({ setIsAdmin }) => {
       }
     } catch (error) {
       toast.error("Invalid admin credentials.");
+      console.error("Error during admin login:", error);
     }
   };
 

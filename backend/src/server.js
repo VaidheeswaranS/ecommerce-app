@@ -11,12 +11,17 @@ import productRouter from "./routes/productRoute.js";
 const app = express();
 const port = process.env.PORT || 8000;
 
+// this is to handle the cors error when trying to access the API for different domain
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://localhost:5174"],
+    credentials: true,
+  })
+);
+
 // middlewares configuration
 // this is the middleware provided by Express which will read the request body and convert it into JS object
 app.use(express.json());
-
-// this is to handle the cors error when trying to access the API for different domain
-app.use(cors());
 
 // this is to read the cookies in the response sent
 app.use(cookieParser());
